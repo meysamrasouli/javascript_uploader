@@ -1,0 +1,209 @@
+/*--------------------| Variables |--------------------*/
+:root{
+    --iu-color-white: #fff;
+
+    --iu-color-green-light: #4bce81;
+    --iu-color-green: #2ecc71;
+    --iu-color-green-dark: #27ae60;
+
+    --iu-color-red-light: #e66d60;
+    --iu-color-red: #e74c3c;
+    --iu-color-red-dark: #c0392b;
+
+    --iu-color-orange-light: #e28e44;
+    --iu-color-orange: #e67e22;
+    --iu-color-orange-dark: #d35400;
+
+    --iu-color-blue-light: #4ea1d8;
+    --iu-color-blue: #3498db;
+    --iu-color-blue-dark: #2980b9;
+
+    --iu-font-color-light: #777;
+    --iu-font-color: #333;
+    --iu-font-size: 14px;
+
+    --iu-background-gray: #efefef;
+    --iu-shadow: 0 0 10px rgba(0,0,0,0.1);
+    --border-radius: 5px;
+}
+/*--------------------| Rest |--------------------*/
+.image-uploader, .image-uploader *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*--------------------| Image Uploader |--------------------*/
+.image-uploader{    
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+.image-uploader .iu-custom-button{
+    min-width: 90px;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 20px;
+    display: inline-block;
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--iu-color-white);
+    cursor: pointer;
+    font-size: var(--iu-font-size);
+    text-align: center;
+    user-select: none;
+}
+.image-uploader .iu-button-container{
+    padding: 5px;
+    display: flex;
+    gap: 5px;
+    background-color: var(--iu-color-white);
+}
+.image-uploader label.iu-button-upload{
+    background-color: var(--iu-color-green);
+}
+.image-uploader label.iu-button-upload:hover{
+    background-color: var(--iu-color-green-dark);
+}
+.image-uploader label.iu-button-upload:active{
+    background-color: var(--iu-color-green-dark);
+}
+.image-uploader label.iu-button-remove{
+    background-color: var(--iu-color-red);
+}
+.image-uploader label.iu-button-remove:hover{
+    background-color: var(--iu-color-red-dark);
+}
+.image-uploader label.iu-button-remove:active{
+    background-color: var(--iu-color-red-dark);
+}
+.image-uploader label.iu-button-tag{
+    background-color: var(--iu-color-orange);
+}
+.image-uploader label.iu-button-tag:hover{
+    background-color: var(--iu-color-orange-dark);
+}
+.image-uploader label.iu-button-tag:active{
+    background-color: var(--iu-color-orange-dark);
+}
+.image-uploader label.iu-button-detail{
+    background-color: var(--iu-color-blue);
+}
+.image-uploader label.iu-button-detail:hover{
+    background-color: var(--iu-color-blue-dark);
+} 
+.image-uploader label.iu-button-detail:active{
+    background-color: var(--iu-color-blue-dark);
+} 
+.image-uploader .iu-image-container{
+    height: 100%;
+    background-color: var(--iu-background-gray);
+}
+.image-uploader .iu-image-container ul{
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    overflow-y: auto;
+    box-shadow: var(--iu-shadow) inset;
+}
+.image-uploader .iu-image-container ul li{
+    width: 150px;
+    height: 200px;
+    display: grid;
+    grid-template: 170px 30px / 150px;
+    border-radius: var(--border-radius);
+    background-color: var(--iu-color-white);
+    cursor: pointer;
+    position: relative;
+    box-shadow: var(--iu-shadow);
+}
+.image-uploader .iu-image-container ul li.tag::before{
+    content: 'T';
+    padding: 5px;
+    color: var(--iu-color-white);
+    background-color: var(--iu-color-orange-light);
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border-radius: var(--border-radius);
+    font-size: var(--iu-font-size);
+    font-weight: bold;
+    box-shadow: var(--iu-shadow);
+}
+.image-uploader .iu-image-container ul li.selected{
+    outline: solid 2px var(--iu-color-blue-light);
+}
+.image-uploader .iu-image-container ul li img{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    object-fit: cover;
+}
+.image-uploader .iu-image-container ul li span{
+    padding: 0 10px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: var(--iu-font-size);
+}
+.image-uploader .iu-input-container input{
+    display: none;
+}
+.image-uploader .iu-notification-container{
+    height: 30px;
+    padding: 0 10px;
+    line-height: 30px;
+    color: var(--iu-font-color-light);
+    font-size: var(--iu-font-size);
+}
+/*--------------------| Overlay |--------------------*/
+.image-uploader .iu-overlay{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.2);
+}
+.image-uploader .iu-overlay .iu-modal{
+    width: 300px;
+    border-radius: var(--border-radius);
+    background-color: var(--iu-color-white);
+    box-shadow: var(--iu-shadow);
+    overflow: hidden;
+}
+.image-uploader .iu-overlay .iu-modal .iu-modal-header{
+    padding: 15px;
+    background-color: var(--iu-background-gray);
+    font-size: 16px;
+    font-weight: bold;
+}
+.image-uploader .iu-overlay .iu-modal .iu-modal-body{
+    padding: 10px;
+    color: var(--iu-font-color);
+}
+.image-uploader .iu-overlay .iu-modal .iu-modal-body label{
+    margin-bottom: 5px;
+    display: block;
+}
+.image-uploader .iu-overlay .iu-modal .iu-modal-body input{
+    width: 100%;
+    height: 34px;
+    margin-top: 3px;
+    padding: 5px;
+    border: solid 1px #ddd;
+    border-radius: var(--border-radius);
+    color: var(--iu-font-color);
+}
+.image-uploader .iu-overlay .iu-modal .iu-modal-footer{
+    padding: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5px;
+}
+.image-uploader .iu-overlay .iu-modal .iu-modal-footer button{
+    background-color: var(--iu-color-blue);
+}
+.image-uploader .iu-overlay .iu-modal .iu-modal-footer button:hover{
+    background-color: var(--iu-color-blue-dark);
+}
